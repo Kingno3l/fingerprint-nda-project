@@ -24,6 +24,7 @@
     <script src="./src/js/websdk.client.bundle.min.js"></script>
     <script src="./src/js/fingerprint.sdk.min.js"></script>
     <script src="./src/js/custom.js"></script>
+    <script src="./backend/js/load_users.js"></script>
 
     <div class="container">
         <div id="controls" class="row justify-content-center mx-5 mx-sm-0 mx-lg-5">
@@ -61,11 +62,13 @@
                                 </select>
                             </div>
                         </div>
+                       
                         <div class="form-row mt-2">
                             <div class="col mb-3 mb-md-0 text-center">
-                                <label for="userID" class="my-text7 my-pri-color">Specify UserID</label>
-                                <input id="userID" type="text" class="form-control" required>
-                            </div>
+                                <label for="userID" class="my-text7 my-pri-color">Specify User to Create</label>
+                                <select id="userID" name="userID" class="form-control" required>
+                                    <option value="">Select User</option>
+                                </select>                            </div>
                         </div>
                         <div class="form-row mt-1">
                             <div class="col text-center">
@@ -197,5 +200,6 @@
         </div>
     </div>
 </section>
+
 
 </html>
