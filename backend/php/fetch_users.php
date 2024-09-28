@@ -1,10 +1,6 @@
 <?php
-// Database connection
-$conn = new mysqli('localhost', 'root', '', 'fingerprint');
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include_once('connection.php');
 
 // Query to fetch users with null indexfinger and middlefinger
 $sql = "SELECT id, fullname FROM users WHERE indexfinger IS NULL AND middlefinger IS NULL";
