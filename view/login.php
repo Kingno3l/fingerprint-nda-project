@@ -1,3 +1,13 @@
+<?php
+session_start(); // Start the session
+
+// If the user is logged in, redirect to the dashboard
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    header('Location: dashboard.php');
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -44,7 +54,7 @@
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" onclick="loginUser();">Sign In</button>
                   <div class="d-flex align-items-center justify-content-center">
                       <p class="fs-4 mb-0 fw-bold">New to Modernize?</p>
-                      <a class="text-primary fw-bold ms-2" href="./signup.html">Create an account</a>
+                      <a class="text-primary fw-bold ms-2" href="./signup.php">Create an account</a>
                   </div>
                   <div id="responseMessage"></div>
               </form>
@@ -56,6 +66,14 @@
       </div>
     </div>
   </div>  
+  <script>
+    // Check if the user is already logged in
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        // Redirect to the dashboard if the user is logged in
+        window.location.href = 'dashboard.php';
+    }
+</script>
+
   <script src="../backend/js/login.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

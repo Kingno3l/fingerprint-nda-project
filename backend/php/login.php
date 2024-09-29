@@ -1,10 +1,8 @@
 <?php
 
+session_start(); // Start the session
+
 include_once('connection.php');
-
-
-
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the JSON input
@@ -13,24 +11,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $input['password'];
 
     // Prepare SQL statement to get user details
-    $stmt = $conn->prepare("SELECT password, role FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, password, role FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
-    
+
     // Check if user exists
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($hashedPassword, $role);
+        $stmt->bind_result($id, $hashedPassword, $role);
         $stmt->fetch();
 
         // Verify the password
         if (password_verify($password, $hashedPassword)) {
-            // Check the role
-            if ($role === 'user') {
-                echo json_encode(["success" => true]);
-            } else {
-                echo json_encode(["success" => false, "message" => "You do not have permission to access this area."]);
-            }
+            // Set session variables
+            $_SESSION['loggedin'] = true;
+            $_SESSION['user_id'] = $id; // Set user id session variable if needed
+            $_SESSION['role'] = $role;
+
+            // Respond with success
+            echo json_encode(["success" => true]);
         } else {
             echo json_encode(["success" => false, "message" => "Invalid password."]);
         }
@@ -42,3 +41,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 }
+?>

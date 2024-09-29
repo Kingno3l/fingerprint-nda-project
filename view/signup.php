@@ -1,3 +1,13 @@
+<?php
+session_start(); // Start the session
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    // User is logged in, redirect to the dashboard
+    header('Location: dashboard.php');
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -53,7 +63,7 @@
                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2"onclick="registerUser();">Sign Up</button>
                     <div class="d-flex align-items-center justify-content-center">
                         <p class="fs-4 mb-0 fw-bold">Already have an account?</p>
-                        <a class="text-primary fw-bold ms-2" href="./login.html">Sign In</a>
+                        <a class="text-primary fw-bold ms-2" href="./login.php">Sign In</a>
                     </div>
                     <div id="responseMessage"></div>
                 </form>
@@ -66,7 +76,14 @@
     </div>
   </div>
 
-  
+  <script>
+    // Check if the user is already logged in
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        // Redirect to the dashboard if the user is logged in
+        window.location.href = 'dashboard.php';
+    }
+</script>
+
   <script src="../backend/js/signup.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
