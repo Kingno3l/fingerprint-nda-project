@@ -27,7 +27,7 @@ function registerUser() {
     .then(data => {
         alert(data); // Display success or error message
         if (data.includes("success")) {
-            window.location.href = "./login.html"; // Redirect to login page on success
+            window.location.href = "../view/login.php"; // Redirect to login page on success
         }
     })
     .catch(error => console.error('Error:', error));

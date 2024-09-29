@@ -1,4 +1,4 @@
-/* function loginUser() {
+function loginUser() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
@@ -32,8 +32,8 @@
 }
 
 
- */
 
+/* 
 function loginUser() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -69,3 +69,4 @@ function loginUser() {
         document.getElementById('responseMessage').innerText = 'An error occurred. Please try again.';
     });
 }
+ */

@@ -66,13 +66,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
       </div>
     </div>
   </div>  
-  <script>
-    // Check if the user is already logged in
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-        // Redirect to the dashboard if the user is logged in
-        window.location.href = 'dashboard.php';
-    }
-</script>
+  
 
   <script src="../backend/js/login.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
