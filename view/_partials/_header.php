@@ -55,11 +55,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             <span class="hide-menu">UI COMPONENTS</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                            <a class="sidebar-link" href="./request-break.php" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
-                                <span class="hide-menu">Buttons</span>
+                                <span class="hide-menu">Request Break</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
